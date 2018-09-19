@@ -3,6 +3,8 @@ clojure / boot / node / sassc / aws-cli
 
 creates an image to use as our base on circle-ci.
 
+Images are published to `docker hub` and can be seen here: https://hub.docker.com/r/fydevs/circleci-base-build/tags/
+
 ## Building a new image
 
 - run `make build`
