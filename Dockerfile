@@ -10,6 +10,5 @@ RUN apt-get install python-pip
 RUN pip install --upgrade pip
 RUN pip install awscli
 RUN pip install awscli --upgrade
-RUN PATH=${PATH}:/usr/local/bin
 
 USER circleci
