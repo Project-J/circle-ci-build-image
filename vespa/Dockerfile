@@ -1,6 +1,6 @@
 FROM vespaengine/vespa:7.104.46
 
-RUN yum -y install java-11-openjdk-devel python-pip
+RUN yum -y install sudo java-11-openjdk-devel python-pip
 RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/bin/java
 RUN update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/bin/javac
 
@@ -20,6 +20,14 @@ RUN pip install awscli==1.16.101
 RUN curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
 RUN chmod +x linux-install-1.10.1.536.sh
 RUN ./linux-install-1.10.1.536.sh
+
+# add circleci user
+RUN adduser circleci && \
+    echo "circleci ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/circleci && \
+    chmod 0440 /etc/sudoers.d/circleci
+
+USER circleci
+RUN ulimit -S -n 262145
 
 # override vespa entrypoint
 ENTRYPOINT []
