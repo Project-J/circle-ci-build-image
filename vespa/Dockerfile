@@ -1,4 +1,4 @@
-FROM vespaengine/vespa:7.104.46
+FROM vespaengine/vespa:7.200.54
 
 RUN yum -y install sudo java-11-openjdk-devel python-pip
 RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/bin/java
@@ -11,6 +11,10 @@ RUN mkdir /usr/local/maven
 RUN mv apache-maven-3.3.9/ /usr/local/maven/
 RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.3.9/bin/mvn 1
 RUN alternatives --set mvn /usr/local/maven/apache-maven-3.3.9/bin/mvn
+
+### configure mvn
+RUN mkdir -p /home/circleci/.m2
+COPY --chown=circleci:circleci .m2 /home/circleci/.m2
 
 # install awscli
 RUN pip install --upgrade pip
