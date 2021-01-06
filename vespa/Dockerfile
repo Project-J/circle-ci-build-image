@@ -1,16 +1,16 @@
-FROM vespaengine/vespa:7.104.46
+FROM vespaengine/vespa:7.310.25
 
-RUN yum -y install sudo java-11-openjdk-devel python-pip
-RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/bin/java
-RUN update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.6.10-1.el7_7.x86_64/bin/javac
+RUN yum -y install sudo java-11.0.8-openjdk-devel python-pip
+RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.8.10-0.el7_8.x86_64/bin/java
+RUN update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.8.10-0.el7_8.x86_64/bin/javac
 
 # mvn
-RUN curl -LO http://www.eu.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-RUN tar xzf apache-maven-3.3.9-bin.tar.gz
+RUN curl -LO https://downloads.apache.org/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
+RUN tar xzf apache-maven-3.5.4-bin.tar.gz
 RUN mkdir /usr/local/maven
-RUN mv apache-maven-3.3.9/ /usr/local/maven/
-RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.3.9/bin/mvn 1
-RUN alternatives --set mvn /usr/local/maven/apache-maven-3.3.9/bin/mvn
+RUN mv apache-maven-3.5.4/ /usr/local/maven/
+RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.5.4/bin/mvn 1
+RUN alternatives --set mvn /usr/local/maven/apache-maven-3.5.4/bin/mvn
 
 # install awscli
 RUN pip install --upgrade pip
@@ -28,6 +28,10 @@ RUN adduser circleci && \
 
 USER circleci
 RUN ulimit -S -n 262145
+
+### configure mvn
+RUN mkdir -p /home/circleci/.m2
+COPY --chown=circleci:circleci .m2 /home/circleci/.m2
 
 # override vespa entrypoint
 ENTRYPOINT []
