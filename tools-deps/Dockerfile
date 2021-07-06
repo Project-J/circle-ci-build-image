@@ -11,7 +11,7 @@ RUN pip install awscli==1.16.101
 
 ### install aws-cdk
 RUN npm install -g typescript
-RUN npm install -g aws-cdk@1.104.0
+RUN npm install -g aws-cdk@1.111.0
 RUN cdk --version
 
 USER circleci
