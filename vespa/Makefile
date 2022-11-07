@@ -1,11 +1,12 @@
 SHA1=`git rev-parse HEAD`
+ECR_REPO=243905809578.dkr.ecr.eu-west-1.amazonaws.com/circleci-build-image
 
 build:
-	docker build -t fydevs/circleci-base-build/vespa .
+	docker build -t vespa-${SHA1} .
 
 push:
-	docker tag fydevs/circleci-base-build/vespa:latest 243905809578.dkr.ecr.eu-west-1.amazonaws.com/circleci-build-image:vespa-$(SHA1)
-	docker push fydevs/circleci-base-build:vespa-$(SHA1)
+	docker tag vespa-${SHA1} $(ECR_REPO):vespa-$(SHA1)
+	docker push $(ECR_REPO):vespa-$(SHA1)
 
 default:
 	$(MAKE) build
