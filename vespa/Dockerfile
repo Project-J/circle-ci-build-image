@@ -1,4 +1,13 @@
-FROM vespaengine/vespa:7.594.36
+FROM vespaengine/vespa:7.310.25
+
+RUN yum -y install sudo java-11.0.8-openjdk-devel python-pip
+RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.8.10-0.el7_8.x86_64/bin/java
+RUN update-alternatives --set javac /usr/lib/jvm/java-11-openjdk-11.0.8.10-0.el7_8.x86_64/bin/javac
+
+# update git
+RUN yum install -y https://repo.ius.io/ius-release-el7.rpm https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+RUN yum -y remove git
+RUN yum -y install git236
 
 # mvn
 RUN curl -LO https://downloads.apache.org/maven/maven-3/3.5.4/binaries/apache-maven-3.5.4-bin.tar.gz
