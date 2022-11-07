@@ -17,9 +17,9 @@ RUN pip install --upgrade pip
 RUN pip install awscli==1.16.101
 
 # clojure
-RUN curl -O https://download.clojure.org/install/linux-install-1.10.1.536.sh
-RUN chmod +x linux-install-1.10.1.536.sh
-RUN ./linux-install-1.10.1.536.sh
+RUN curl -O https://download.clojure.org/install/linux-install-1.11.1.1182.sh
+RUN chmod +x linux-install-1.11.1.1182.sh
+RUN sudo ./linux-install-1.11.1.1182.sh
 
 # add circleci user
 RUN adduser circleci && \
