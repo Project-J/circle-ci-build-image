@@ -1,9 +1,9 @@
-FROM circleci/clojure:openjdk-11-tools-deps-1.10.3.855-node
+FROM cimg/clojure:1.11.1-openjdk-11.0-node
 
 USER root
 
 RUN apt update
-RUN apt install -y sassc make maven python-pip nodejs
+RUN apt install -y sassc make maven python3-pip nodejs
 
 ### install awscli
 RUN pip install --upgrade pip
