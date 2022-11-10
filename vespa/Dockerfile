@@ -1,4 +1,4 @@
-FROM vespaengine/vespa:7.310.25
+FROM vespaengine/vespa:7.594.36
 
 RUN yum -y install sudo java-11.0.8-openjdk-devel python-pip
 RUN update-alternatives --set java /usr/lib/jvm/java-11-openjdk-11.0.8.10-0.el7_8.x86_64/bin/java
