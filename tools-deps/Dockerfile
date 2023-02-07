@@ -1,9 +1,9 @@
-FROM cimg/clojure:1.11.1-openjdk-11.0-node
+FROM cimg/clojure:1.11.1-openjdk-17.0-node
 
 USER root
 
 RUN apt update
-RUN apt install -y sassc make maven python3-pip nodejs
+RUN apt install -y sassc make python3-pip nodejs
 
 ### install awscli
 RUN pip install --upgrade pip
