@@ -8,6 +8,6 @@ RUN apt-get install -y sassc make
 ### install awscli
 RUN apt-get install python-pip
 RUN pip install --upgrade pip
-RUN pip install awscli==1.16.101
+RUN pip install awscli==1.27.66
 
 USER circleci

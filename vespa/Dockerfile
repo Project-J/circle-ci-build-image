@@ -29,7 +29,7 @@ RUN alternatives --set mvn /usr/local/maven/apache-maven-3.6.3/bin/mvn
 
 # install awscli
 RUN pip3 install --upgrade pip
-RUN pip3 install awscli==1.16.101
+RUN pip3 install awscli==1.27.66
 
 # clojure
 RUN curl -O https://download.clojure.org/install/linux-install-1.11.1.1182.sh

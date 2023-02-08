@@ -7,7 +7,7 @@ RUN apt install -y sassc make python3-pip nodejs
 
 ### install awscli
 RUN pip install --upgrade pip
-RUN pip install awscli==1.16.101
+RUN pip install awscli==1.27.66
 
 ### install aws-cdk
 RUN npm install -g typescript
