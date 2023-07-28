@@ -2,10 +2,10 @@ FROM vespaengine/vespa:8.186.15
 
 USER root
 
-RUN yum -y --enablerepo=extras install epel-release-8-18.el8
+RUN yum -y --enablerepo=extras install epel-release
 RUN yum -y install sudo java-17-openjdk python3-pip
-RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-17.0.6.0.10-3.el8_7.x86_64/bin/java
-RUN update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-17.0.6.0.10-3.el8_7.x86_64/bin/javac
+RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-17.0.6.0.9-0.3.ea.el8.x86_64/bin/java
+RUN update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-17.0.6.0.9-0.3.ea.el8.x86_64/bin/javac
 
 # update git
 RUN dnf install -y wget unzip tar make gcc openssl-devel libcurl-devel expat-devel
@@ -20,12 +20,12 @@ RUN sudo make prefix=/usr/local all
 RUN sudo make prefix=/usr/local install
 
 # mvn
-RUN curl -LO https://downloads.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
-RUN tar xzf apache-maven-3.6.3-bin.tar.gz
+RUN curl -LO https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
+RUN tar xzf apache-maven-3.9.3-bin.tar.gz
 RUN mkdir /usr/local/maven
-RUN mv apache-maven-3.6.3/ /usr/local/maven/
-RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.6.3/bin/mvn 1
-RUN alternatives --set mvn /usr/local/maven/apache-maven-3.6.3/bin/mvn
+RUN mv apache-maven-3.9.3/ /usr/local/maven/
+RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.9.3/bin/mvn 1
+RUN alternatives --set mvn /usr/local/maven/apache-maven-3.9.3/bin/mvn
 
 # install awscli
 RUN pip3 install --upgrade pip
