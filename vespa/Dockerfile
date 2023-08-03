@@ -20,12 +20,12 @@ RUN sudo make prefix=/usr/local all
 RUN sudo make prefix=/usr/local install
 
 # mvn
-RUN curl -LO https://dlcdn.apache.org/maven/maven-3/3.9.3/binaries/apache-maven-3.9.3-bin.tar.gz
-RUN tar xzf apache-maven-3.9.3-bin.tar.gz
+RUN curl -LO https://dlcdn.apache.org/maven/maven-3/3.9.4/binaries/apache-maven-3.9.4-bin.tar.gz
+RUN tar xzf apache-maven-3.9.4-bin.tar.gz
 RUN mkdir /usr/local/maven
-RUN mv apache-maven-3.9.3/ /usr/local/maven/
-RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.9.3/bin/mvn 1
-RUN alternatives --set mvn /usr/local/maven/apache-maven-3.9.3/bin/mvn
+RUN mv apache-maven-3.9.4/ /usr/local/maven/
+RUN alternatives --install /usr/bin/mvn mvn /usr/local/maven/apache-maven-3.9.4/bin/mvn 1
+RUN alternatives --set mvn /usr/local/maven/apache-maven-3.9.4/bin/mvn
 
 # install awscli
 RUN pip3 install --upgrade pip
