@@ -3,7 +3,7 @@ FROM vespaengine/vespa:8.186.15
 USER root
 
 RUN yum -y --enablerepo=extras install epel-release
-RUN yum -y install sudo java-17-openjdk python3-pip
+RUN yum -y install sudo java-17-openjdk python3-pip nodejs openssl
 RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-17.0.6.0.9-0.3.ea.el8.x86_64/bin/java
 RUN update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-17.0.6.0.9-0.3.ea.el8.x86_64/bin/javac
 
