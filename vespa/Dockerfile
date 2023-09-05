@@ -1,4 +1,4 @@
-FROM vespaengine/vespa:8.186.15
+FROM vespaengine/vespa:8.217.46
 
 USER root
 
