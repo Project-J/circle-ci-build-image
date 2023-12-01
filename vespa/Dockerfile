@@ -1,11 +1,11 @@
-FROM vespaengine/vespa:8.265.12
+FROM vespaengine/vespa:8.266.20
 
 USER root
 
 RUN yum -y --enablerepo=extras install epel-release
 RUN yum -y install sudo java-17-openjdk python3-pip nodejs openssl jq
-RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-17.0.6.0.9-0.3.ea.el8.x86_64/bin/java
-RUN update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-17.0.6.0.9-0.3.ea.el8.x86_64/bin/javac
+RUN update-alternatives --set java /usr/lib/jvm/java-17-openjdk-17.0.9.0.9-2.el8.x86_64/bin/java
+RUN update-alternatives --set javac /usr/lib/jvm/java-17-openjdk-17.0.9.0.9-2.el8.x86_64/bin/javac
 
 # update git
 RUN dnf install -y wget unzip tar make gcc openssl-devel libcurl-devel expat-devel
